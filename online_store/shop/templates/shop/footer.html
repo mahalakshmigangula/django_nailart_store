@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+	<style>
+		html {
+			position: relative;
+			min-height: 100%;
+		}
+
+		body {
+			margin-bottom: 60px;
+			/* Margin bottom by footer height */
+		}
+
+		.footer {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			height: 60px;
+			/* Set the fixed height of the footer here */
+			line-height: 60px;
+			/* Vertically center the text there */
+			background-color: #0000FF;
+			color:white;
+		}
+
+		.container {
+			width: auto;
+			max-width: 680px;
+			padding: 0 15px;
+		}
+	</style>
+</head>
+
+<body>
+	<footer class="footer">
+		<div class="container">
+			<span>adress: 15,glen eastonsquare,leixlip </span>
+		</div>
+	</footer>
+</body>
+
+</html>

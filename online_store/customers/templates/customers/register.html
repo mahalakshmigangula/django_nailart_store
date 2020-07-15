@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% include 'shop/navbar.html' %}
+
+
+<head>
+    <title>Registration</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="col-lg-6">
+
+            <h2>Registration Form</h2>
+            <hr>
+            <div>
+                {% for message in messages %}
+                <h3 style="color:red"> {{message}} </h3>
+                {% endfor %}
+            </div>
+            <form action="/customers/register" method="post">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter First Name" name="first_name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter Last Name" name="last_name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter User Name" name="username" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Enter email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Enter Password" name="password1" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Enter Confirm Password" name="password2" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Registration</button>
+            </form>
+        </div>
+    </div>
+    {% include 'shop/footer.html' %}
+
+</body>
+
+</html>

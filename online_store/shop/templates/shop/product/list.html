@@ -1,0 +1,55 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}
+{% if category %}{{ category.name }} {% else %} Products {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row" style="margin-top: 6%">
+		<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+			<div class="sidebar-module">
+				<h4>Categories</h4>
+
+				<ul class="list-group list-group-flush">
+					<li {% if not category %} class="active" {% endif %}>
+						<a href="{% url 'shop:product_list' %}" class="list-group-item list-group-item-action">All</a>
+					</li>
+
+					{% for c in categories %}
+					<li {% if category.slug == c.slug %} class="active" {% endif %}>
+						<a href="{{ c.get_absolute_url }}"
+							class="list-group-item list-group-item-action">{{ c.name }}</a>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div><!-- /.blog-sidebar -->
+		<div class="col-sm-8 blog-main">
+			<div class="blog-post">
+				<div class="row">
+					{% for product in products %}
+					<div class="col-md-4">
+						<div class="thumbnail">
+							<a href="{{ product.get_absolute_url }}">
+								<img src="{% if product.image %} {{ product.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}"
+									alt="..." style="height: 130px; width: auto">
+							</a>
+							<div class="caption">
+								<h5>
+									<a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+								</h5>
+								<h6>$. {{ product.price }}</h6>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+
+
+			</div><!-- /.blog-post -->
+
+		</div><!-- /.blog-main -->
+	</div><!-- /.row -->
+</div><!-- /.container -->
+{% endblock %}
